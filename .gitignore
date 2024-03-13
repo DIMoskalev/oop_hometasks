@@ -1,0 +1,10 @@
+.venv
+venv/
+*.pyc
+*.log
+!debug.log
+.idea
+__pycache__
+poetry.lock
+pyproject.toml
+.coverage
