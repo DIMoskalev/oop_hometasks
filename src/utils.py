@@ -1,9 +1,4 @@
 import json
-import os
-
-from config import ROOT_DIR
-
-OPERATIONS_PATH = os.path.join(ROOT_DIR, 'src', 'products.json')
 
 
 def read_from_file_json(file_path):
