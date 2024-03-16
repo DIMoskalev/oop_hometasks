@@ -1,5 +1,8 @@
 import json
 
+from src.category import Category
+from src.product import Product
+
 
 def read_from_file_json(file_path):
     """
@@ -10,18 +13,19 @@ def read_from_file_json(file_path):
         return data
 
 
-def creating_class_objects(list_of_objects):
-    object_list = []
-    object_list.append(list_of_objects[0]['name'])
-    object_list.append(list_of_objects[0]['description'])
-    object_list.append(list_of_objects[0]['products'])
-    # for object in list_of_objects:
-    #     object_list.append(object['name'][0])
-    #     object_list.append(object['description'][0])
-    #     object_list.append(object['products'][0])
+def creating_category_objects(list_of_objects):
+    """Функция создает экземпляры класса Category"""
+    list_of_category = []
+    for data in list_of_objects:
+        category = Category(data['name'], data['description'], data['products'])
+        list_of_category.append(category)
+    return list_of_category
 
-    return object_list
-
-
-# print(read_from_file_json(OPERATIONS_PATH))
-# print(creating_class_objects(read_from_file_json(OPERATIONS_PATH)))
+def creating_product_objects(list_of_objects):
+    """Функция создает экземпляры класса Product"""
+    list_of_products = []
+    for data in list_of_objects:
+        for prod in data['products']:
+            product = Product(prod['name'], prod['description'], prod['price'], prod['quantity'])
+            list_of_products.append(product)
+    return list_of_products
