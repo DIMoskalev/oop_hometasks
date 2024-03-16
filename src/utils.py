@@ -21,6 +21,7 @@ def creating_category_objects(list_of_objects):
         list_of_category.append(category)
     return list_of_category
 
+
 def creating_product_objects(list_of_objects):
     """Функция создает экземпляры класса Product"""
     list_of_products = []
