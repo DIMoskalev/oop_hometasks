@@ -19,3 +19,11 @@ def test_display_price(new_product):
     new_product.display_price = 0
     assert new_product.display_price == 100
 
+
+def test_str(new_product, new_product2):
+    assert new_product.__str__() == 'Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.'
+    assert new_product2.__str__() == 'Iphone 15, 210000.0 руб. Остаток: 8 шт.'
+
+
+def test_add(new_product, new_product2):
+    assert new_product + new_product2 == 2580000.0
