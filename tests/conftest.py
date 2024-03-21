@@ -46,3 +46,11 @@ def dict_with_product():
             "description": "256GB, Серый цвет, 200MP камера",
             "price": 180000.0,
             "quantity": 5}
+
+
+@pytest.fixture()
+def new_product2():
+    return Product("Iphone 15",
+                   "512GB, Gray space",
+                   210000.0,
+                   8)
