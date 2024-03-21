@@ -12,6 +12,12 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self):
+        return f'{self.name}, {self.display_price} руб. Остаток: {self.quantity} шт.'
+
+    def __add__(self, other):
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
+
     @classmethod
     def add_new_product(cls, dict_with_product):
         """Метод создает товар и возвращает объект, который можно добавлять в список товаров"""
