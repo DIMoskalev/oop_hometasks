@@ -18,5 +18,5 @@ def test_display_products(new_category):
     assert new_category.display_products == (
         'Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.\n'
         'Iphone 15, 210000.0 руб. Остаток: 8 шт.\n'
-        'Xiaomi Redmi Note 11, 1000.0 руб. Остаток: 14 шт.\n'
+        'Xiaomi Redmi Note 11, 1000.0 руб. Остаток: 14 шт.'
     )
