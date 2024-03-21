@@ -23,10 +23,11 @@ class Category:
     @property
     def display_products(self):
         """Геттер, который выводит список товаров в формате: 'Продукт, 80 руб. Остаток: 15 шт.'"""
-        list_of_products = ''
-        for product in self.__products:
-            list_of_products += f'{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n'
-        return list_of_products
+        result = (
+            f'{product.name}, {product.display_price} руб. Остаток: {product.quantity} шт.'
+            for product in self.__products
+        )
+        return "\n".join(result)
 
     def __repr__(self):
         return (f"\nНазвание: {self.name}\n"
