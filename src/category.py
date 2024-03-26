@@ -16,16 +16,16 @@ class Category:
         Category.total_uniq_products = len(self.__products)
 
     def __str__(self):
-        """Магический метод, для строкового отображения продукта в формате: 'Продукт, 80 руб. Остаток: 15 шт.'"""
-        result = (
-            f'{product.name}, {product.display_price} руб. Остаток: {product.quantity} шт.'
-            for product in self.__products
-        )
-        return "\n".join(result)
+        """Магический метод, который возвращает строковое отображение информации о категории,
+        содержащее информацию о сумме единиц товара в ней"""
+        return f'{self.name}, количество продуктов: {len(self)} шт.'
 
     def __len__(self):
-        """Магический метод, который выводит общее число всех продуктов на складе"""
-        return f'{self.name}, количество продуктов: {len(self.__products)} шт.'
+        """Магический метод, который возвращает общее число всех продуктов конкретной категории на складе"""
+        counter = 0
+        for product in self.__products:
+            counter += product.quantity
+        return counter
 
     def add_product(self, new_product):
         """Метод, который принимает на вход объект товара и добавляет его в список"""
