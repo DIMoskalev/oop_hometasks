@@ -1,4 +1,7 @@
-class Product:
+from src.basic import Basic
+
+
+class Product(Basic):
     """Класс конкретного товара в магазине"""
     name: str
     description: str
