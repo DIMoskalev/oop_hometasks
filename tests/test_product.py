@@ -29,3 +29,8 @@ def test_str(new_product, new_product2):
 
 def test_add(new_product, new_product2):
     assert new_product + new_product2 == 2580000.0
+
+
+def test_repr(new_product):
+    assert repr(new_product) == ("Создан объект Product(dict_values(['Samsung Galaxy C23 Ultra', '256GB, Серый "
+                                 "цвет, 200MP камера', 180000.0, 5, 'Серый']))")
