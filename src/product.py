@@ -1,7 +1,8 @@
 from src.basic import Basic
+from src.mixinlog import MixinLog
 
 
-class Product(Basic):
+class Product(MixinLog, Basic):
     """Класс конкретного товара в магазине"""
     name: str
     description: str
@@ -16,6 +17,8 @@ class Product(Basic):
         self.__price = price
         self.quantity = quantity
         self.color = color
+        if type(self) is Product:
+            print(super().__repr__())
 
     def __str__(self):
         return f'{self.name}, {self.display_price} руб. Остаток: {self.quantity} шт.'
@@ -42,9 +45,3 @@ class Product(Basic):
             print('Введена некорректная цена')
         else:
             self.__price = new_price
-
-    def __repr__(self):
-        return (f"\nНазвание: {self.name}\n"
-                f"Описание: {self.description}\n"
-                f"Цена: {self.__price}\n"
-                f"Количество в наличии: {self.quantity}\n")
