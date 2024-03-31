@@ -3,6 +3,7 @@ import pytest
 from config import ROOT_DIR
 from src.category import Category
 from src.product import Product
+from src.smartphone import Smartphone
 
 OPERATIONS_PATH = os.path.join(ROOT_DIR, 'src', 'products.json')
 
@@ -60,3 +61,15 @@ def new_product2():
                    210000.0,
                    8,
                    "Gray space")
+
+
+@pytest.fixture()
+def smart():
+    return Smartphone("Iphone 15",
+                      "512GB, Gray space",
+                      210000.0,
+                      8,
+                      "Gray space",
+                      "Капец какая производительность",
+                      "Четкая модель",
+                      "Очень много")
