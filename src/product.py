@@ -4,13 +4,23 @@ class Product:
     description: str
     price: float
     quantity: int
+    color: str
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, quantity, color):
         """Метод инициализации экземпляра класса"""
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        self.color = color
+
+    def __str__(self):
+        return f'{self.name}, {self.display_price} руб. Остаток: {self.quantity} шт.'
+
+    def __add__(self, other):
+        if type(other) is not type(self):
+            raise TypeError('Можно складывать товары только из одинаковых классов продуктов')
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
 
     @classmethod
     def add_new_product(cls, dict_with_product):
