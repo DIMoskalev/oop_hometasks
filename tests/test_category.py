@@ -1,3 +1,5 @@
+import pytest
+
 from src.category import Category
 from src.product import Product
 
@@ -28,3 +30,13 @@ def test_str(new_category):
 
 def test_len(new_category):
     assert new_category.__len__() == 27
+
+
+def test_add_product_with_zero_quantity(new_category, product_with_zero_quantity):
+    with pytest.raises(ValueError):
+        new_category.add_product(product_with_zero_quantity)
+
+
+def test_add_product_with_zero_quantity_text(new_category, product_with_zero_quantity):
+    with pytest.raises(ValueError, match='Товар с нулевым количеством не может быть добавлен'):
+        new_category.add_product(product_with_zero_quantity)
