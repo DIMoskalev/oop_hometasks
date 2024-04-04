@@ -38,6 +38,8 @@ class Category:
         if isinstance(new_product, Product):
             self.__products.append(new_product)
             Category.total_uniq_products += 1
+        if new_product.quantity == 0:
+            raise ValueError('Товар с нулевым количеством не может быть добавлен')
 
     @property
     def display_products(self):
@@ -47,6 +49,9 @@ class Category:
             for product in self.__products
         )
         return "\n".join(result)
+
+    def avg_price(self):
+        
 
     def __repr__(self):
         return (f"\nНазвание: {self.name}\n"
