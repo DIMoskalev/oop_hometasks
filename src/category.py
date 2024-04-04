@@ -51,7 +51,15 @@ class Category:
         return "\n".join(result)
 
     def avg_price(self):
-        
+        total_price = 0
+        try:
+            for product in self.__products:
+                total_price += product.display_price
+            avg_price = total_price / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+        else:
+            return avg_price
 
     def __repr__(self):
         return (f"\nНазвание: {self.name}\n"
