@@ -16,6 +16,8 @@ class Category:
         for prod in products:
             if not isinstance(prod, Product):
                 raise TypeError('Можно добавлять в список только продукт или его наследников')
+            if prod.quantity == 0:
+                raise ValueError('Товар с нулевым количеством не может быть добавлен')
         self.__products = products
 
         Category.total_categories_amount += 1
