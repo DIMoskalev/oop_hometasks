@@ -14,10 +14,10 @@ class Category:
         self.name = name
         self.description = description
         for prod in products:
-            if not isinstance(prod, Product):
-                raise TypeError('Можно добавлять в список только продукт или его наследников')
             if prod.quantity == 0:
                 raise ValueError('Товар с нулевым количеством не может быть добавлен')
+            if not isinstance(prod, Product):
+                raise TypeError('Можно добавлять в список только продукт или его наследников')
         self.__products = products
 
         Category.total_categories_amount += 1
@@ -37,11 +37,11 @@ class Category:
 
     def add_product(self, new_product):
         """Метод, который принимает на вход объект товара и добавляет его в список"""
+        if new_product.quantity == 0:
+            raise ValueError('Товар с нулевым количеством не может быть добавлен')
         if isinstance(new_product, Product):
             self.__products.append(new_product)
             Category.total_uniq_products += 1
-        if new_product.quantity == 0:
-            raise ValueError('Товар с нулевым количеством не может быть добавлен')
 
     @property
     def display_products(self):
