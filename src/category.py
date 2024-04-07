@@ -14,6 +14,8 @@ class Category:
         self.name = name
         self.description = description
         for prod in products:
+            if prod.quantity == 0:
+                raise ValueError('Товар с нулевым количеством не может быть добавлен')
             if not isinstance(prod, Product):
                 raise TypeError('Можно добавлять в список только продукт или его наследников')
         self.__products = products
@@ -35,6 +37,8 @@ class Category:
 
     def add_product(self, new_product):
         """Метод, который принимает на вход объект товара и добавляет его в список"""
+        if new_product.quantity == 0:
+            raise ValueError('Товар с нулевым количеством не может быть добавлен')
         if isinstance(new_product, Product):
             self.__products.append(new_product)
             Category.total_uniq_products += 1
@@ -47,6 +51,17 @@ class Category:
             for product in self.__products
         )
         return "\n".join(result)
+
+    def avg_price(self):
+        total_price = 0
+        try:
+            for product in self.__products:
+                total_price += product.display_price
+            avg_price = total_price / len(self.__products)
+        except ZeroDivisionError:
+            return 0
+        else:
+            return avg_price
 
     def __repr__(self):
         return (f"\nНазвание: {self.name}\n"

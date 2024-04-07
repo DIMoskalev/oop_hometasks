@@ -30,7 +30,7 @@ def new_category():
                                 "Gray space"),
                         Product("Xiaomi Redmi Note 11",
                                 "1024GB, Синий",
-                                1000.0,
+                                60000.0,
                                 14,
                                 "Синий")
                     ])
@@ -73,3 +73,19 @@ def smart():
                       "Капец какая производительность",
                       "Четкая модель",
                       "Очень много")
+
+
+@pytest.fixture()
+def product_with_zero_quantity():
+    return Product("Iphone 15",
+                   "512GB, Gray space",
+                   210000.0,
+                   0,
+                   "Gray space")
+
+
+@pytest.fixture()
+def new_category_empty():
+    return Category('Смартфоны',
+                    'Описание смартфонов',
+                    [])
